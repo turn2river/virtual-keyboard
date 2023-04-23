@@ -1,0 +1,17 @@
+# output
+/dist
+/tmp
+/out-tsc
+/build
+
+# MacOS
+.DS_store
+
+# IDE - VSCode
+.vscode/*
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
