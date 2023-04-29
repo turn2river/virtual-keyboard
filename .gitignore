@@ -8,7 +8,7 @@
 .DS_store
 
 # IDE - VSCode
-.vscode/*
+.vscode
 
 # Dependency directories
 node_modules/

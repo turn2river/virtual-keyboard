@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5e5;
+}
+
+/* .main-container {
+  width: 880px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.main {
+  margin-top: 20px;
+  font-family: monospace;
+  font-size: 80px;
+  text-align: center;
+  font-weight: 700;
+  color: greenyellow;
+} */
+
+.display-label {
+  display: block;
+  width: 1032px;
+  height: 394px;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+
+#display {
+  padding: 10px;
+  width: 1032px;
+  height: 394px;
+  resize: none;
+  border-radius: 8px;
+  outline: none;
+  font-family: monospace;
+  border: 8px solid #d6d6d6;
+}
+
+.keyboard {
+  width: 1032px;
+  height: 394px;
+  padding: 21px;
+  border-radius: 16px;
+  background-color: #d6d6d6;
+  box-shadow: inset 2px 2px 10px 3px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 21px;
+}
+
+.button {
+  outline: none;
+  border: none;
+  width: 62px;
+  height: 64px;
+  border-radius: 4px;
+  filter: drop-shadow(0px 5px 3px #626262);
+  transition: 0.3s ease;
+  padding: 10px;
+}
+
+.button--delete,
+.button--tab {
+  width: 93px;
+}
+
+.button--capslock,
+.button--return {
+  width: 112px;
+}
+
+.button--shift {
+  width: 146px;
+}
+
+.button--meta {
+  width: 78px;
+}
+
+.button--space {
+  width: 335px;
+  background-image: url(./assets/space.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #d6d6d6;
+  background-position:  40%;
+  opacity: 0.8;
+}
+
+.button--space:hover,
+.button--space:active {
+  opacity: 1;
+}
+
+.button-arrow {
+  height: 30px;
+}
+
+.vertical-arrows__container {
+  display: flex;
+  width: 62px;
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+.button--left,
+.button--right {
+  margin-top: 34px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.button:active {
+  filter: drop-shadow(0px 0px 2px #626262);
+  transform: translateY(3px);
+}
