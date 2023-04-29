@@ -55,15 +55,15 @@ body {
   align-items: center;
 }
 
-.button--left {
+.button__left {
   justify-content: start;
 }
 
-.button--right {
+.button__right {
   justify-content: flex-end;
 }
 
-.button--bottom {
+.button__bottom {
   align-items: flex-end;
 }
 
@@ -149,6 +149,7 @@ body {
 
 .button__space {
   width: 335px;
+  border: 2px solid #e5e5e5;
   background-image: url(./assets/space.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -174,9 +175,33 @@ body {
   row-gap: 4px;
 }
 
-.button__left,
-.button__right {
+.button-arrow__left,
+.button-arrow__right {
   margin-top: 34px;
+}
+
+.button-arrow__left {
+  background-image: url(./assets/icons/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button-arrow__up {
+  background-image: url(./assets/icons/arrow-up.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button-arrow__down {
+  background-image: url(./assets/icons/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button-arrow__right {
+  background-image: url(./assets/icons/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .button:hover {
