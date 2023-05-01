@@ -1,52 +1,55 @@
 export default class Key {
-  constructor(code) {
+  constructor(key) {
     this.container = document.createElement('button');
-    switch (code) {
+    this.container.setAttribute('data-code', key.code);
+    this.key = key;
+    this.container.innerText = this.key.key;
+    switch (key.code) {
       case 'Backspace':
-        this.addClasses('button button__right button__bottom button__delete');
+        this.container.classList.add('button', 'button__right', 'button__bottom', 'button__delete');
         break;
       case 'Tab':
-        this.addClasses('button button__left button__bottom button__tab');
+        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__tab');
         break;
       case 'CapsLock':
-        this.addClasses('button button__left button__bottom button__capslock');
+        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__capslock');
         break;
       case 'Enter':
-        this.addClasses('button button__right button__bottom button__return');
+        this.container.classList.add('button', 'button__right', 'button__bottom', 'button__return');
         break;
       case 'ShiftLeft':
-        this.addClasses('button button__left button__bottom button__shift');
+        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__shift');
         break;
       case 'ShiftRight':
-        this.addClasses('button button__left button__bottom button__shift');
+        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__shift');
         break;
       case 'EN':
-        this.addClasses('button button__language');
+        this.container.classList.add('button', 'button__language');
         break;
       case 'ControlLeft':
-        this.addClasses('button button__bottom button__control');
+        this.container.classList.add('button', 'button__bottom', 'button__control');
         break;
       case 'AltLeft':
-        this.addClasses('button button__bottom button__alt');
+        this.container.classList.add('button', 'button__bottom', 'button__alt');
         break;
       case 'MetaLeft':
-        this.addClasses('button button__bottom button__meta');
+        this.container.classList.add('button', 'button__bottom', 'button__meta');
         break;
       case 'Space':
-        this.addClasses('button button__bottom button__space');
+        this.container.classList.add('button', 'button__bottom', 'button__space');
         break;
       case 'MetaRight':
-        this.addClasses('button button__bottom button__meta button__meta--right');
+        this.container.classList.add('button', 'button__bottom', 'button__meta', 'button__meta--right');
         break;
       case 'AltRight':
-        this.addClasses('button button__bottom button__alt button__alt--right');
+        this.container.classList.add('button', 'button__bottom', 'button__alt', 'button__alt--right');
         break;
       default:
-        this.addClasses('button');
+        this.container.classList.add('button');
     }
   }
 
-  addClasses(classList) {
-    this.container.classList.add(classList);
+  render() {
+    return this.container;
   }
 }
