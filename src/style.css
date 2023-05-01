@@ -17,6 +17,7 @@ body {
 }
 
 #display {
+  font-size: 40px;
   padding: 10px;
   width: 1032px;
   height: 394px;
