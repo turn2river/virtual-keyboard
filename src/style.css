@@ -13,7 +13,7 @@ body {
   width: 1032px;
   height: 394px;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 32px;
 }
 
 #display {
@@ -129,7 +129,7 @@ body {
   top: 5px;
 }
 
-.button__capslock--active::after {
+.button__capslock.active::after {
   background-color: #00ffff;
 }
 
@@ -154,13 +154,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #d6d6d6;
-  background-position:  40%;
-  opacity: 0.8;
+  background-position: 40%;
+  transition: 0.5s;
 }
 
 .button__space:hover,
 .button__space:active {
-  opacity: 1;
+  background-position: 0 40%;
 }
 
 .button-arrow {
@@ -180,28 +180,9 @@ body {
   margin-top: 34px;
 }
 
-.button-arrow__left {
-  background-image: url(./assets/icons/arrow-left.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.button-arrow__up {
-  background-image: url(./assets/icons/arrow-up.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.button-arrow__down {
-  background-image: url(./assets/icons/arrow-down.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.button-arrow__right {
-  background-image: url(./assets/icons/arrow-right.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+.button__language {
+  background-color: DarkSlateBlue;
+  color: white;
 }
 
 .button:hover {
@@ -209,7 +190,18 @@ body {
   background-color: #ffffff;
 }
 
+.button__language:hover {
+  background-color: skyblue;
+  color: white;
+}
+
 .button:active {
   filter: drop-shadow(0px 0px 2px #626262);
   transform: translateY(3px);
+}
+
+.active {
+  filter: drop-shadow(0px 0px 2px #626262);
+  transform: translateY(3px);
+  background-color: #ffffff;
 }

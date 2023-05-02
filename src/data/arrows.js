@@ -1,21 +1,21 @@
 const arrows = [
   {
-    key: '',
+    key: '◄',
     shift: '',
     code: 'ArrowLeft',
   },
   {
-    key: '',
+    key: '▲',
     shift: '',
     code: 'ArrowUp',
   },
   {
-    key: '',
+    key: '▼',
     shift: '',
     code: 'ArrowDown',
   },
   {
-    key: '',
+    key: '►',
     shift: '',
     code: 'ArrowRight',
   },

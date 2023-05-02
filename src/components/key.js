@@ -3,6 +3,7 @@ export default class Key {
     this.container = document.createElement('button');
     this.container.setAttribute('data-code', key.code);
     this.key = key;
+    this.lang = 'EN';
     this.container.innerText = this.key.key;
     switch (this.key.code) {
       case 'Backspace':
@@ -23,8 +24,8 @@ export default class Key {
       case 'ShiftRight':
         this.container.classList.add('button', 'button--special', 'button__right', 'button__bottom', 'button__shift');
         break;
-      case 'EN':
-        this.container.classList.add('button', 'button--special', 'button__language');
+      case 'lang':
+        this.container.classList.add('button', 'button__language');
         break;
       case 'ControlLeft':
         this.container.classList.add('button', 'button--special', 'button__bottom', 'button__control');
@@ -45,23 +46,39 @@ export default class Key {
         this.container.classList.add('button', 'button--special', 'button__bottom', 'button__alt', 'button__alt--right');
         break;
       case 'ArrowLeft':
-        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__left');
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__left');
         break;
       case 'ArrowUp':
-        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__up');
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__up');
         break;
       case 'ArrowDown':
-        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__down');
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__down');
         break;
       case 'ArrowRight':
-        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__right');
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__right');
         break;
       default:
-        this.container.classList.add('button');
+        this.container.classList.add('button', 'to-shift');
+    }
+    if (key.caps) {
+      this.container.classList.add('to-caps');
     }
   }
 
   render() {
+    // const { isShifted, isCapsed, isMeta } = state;
+    // if (isShifted) {
+    //   this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
+    //   // console.log('@');
+    //   return this.container;
+    // } if (isCapsed) {
+    //   console.log(isCapsed);
+    // } else if (isMeta) {
+    //   console.log(isMeta);
+    // } else {
+    //   this.container.innerText = this.key.key;
+    // }
+
     return this.container;
   }
 

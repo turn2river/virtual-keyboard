@@ -31,6 +31,9 @@ class Display {
 
     let value;
     this.textarea.focus();
+    if (code === 'lang') {
+      return;
+    }
     if (code === 'Tab') {
       value = '\t';
     } else if (code === 'Enter') {
