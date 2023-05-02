@@ -4,7 +4,7 @@ export default class Key {
     this.container.setAttribute('data-code', key.code);
     this.key = key;
     this.container.innerText = this.key.key;
-    switch (key.code) {
+    switch (this.key.code) {
       case 'Backspace':
         this.container.classList.add('button', 'button__right', 'button__bottom', 'button__delete');
         break;
@@ -21,7 +21,7 @@ export default class Key {
         this.container.classList.add('button', 'button__left', 'button__bottom', 'button__shift');
         break;
       case 'ShiftRight':
-        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__shift');
+        this.container.classList.add('button', 'button__right', 'button__bottom', 'button__shift');
         break;
       case 'EN':
         this.container.classList.add('button', 'button__language');
@@ -44,12 +44,28 @@ export default class Key {
       case 'AltRight':
         this.container.classList.add('button', 'button__bottom', 'button__alt', 'button__alt--right');
         break;
+      case 'ArrowLeft':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__left');
+        break;
+      case 'ArrowUp':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__up');
+        break;
+      case 'ArrowDown':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__down');
+        break;
+      case 'ArrowRight':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__right');
+        break;
       default:
         this.container.classList.add('button');
     }
   }
 
   render() {
+    return this.container;
+  }
+
+  renderArrows() {
     return this.container;
   }
 }

@@ -299,26 +299,6 @@ const en = [
     shift: '',
     code: 'AltRight',
   },
-  {
-    key: 'ArrowLeft',
-    shift: '',
-    code: 'ArrowLeft',
-  },
-  {
-    key: 'ArrowUp',
-    shift: '',
-    code: 'ArrowUp',
-  },
-  {
-    key: 'ArrowDown',
-    shift: '',
-    code: 'ArrowDown',
-  },
-  {
-    key: 'ArrowRight',
-    shift: '',
-    code: 'ArrowRight',
-  },
 ];
 
 export default en;
