@@ -65,12 +65,12 @@ const en = [
     code: 'Equal',
   },
   {
-    key: 'Backspace',
-    shift: 'Delete',
+    key: 'delete',
+    shift: '',
     code: 'Backspace',
   },
   {
-    key: 'Tab',
+    key: 'tab',
     shift: '',
     code: 'Tab',
   },
@@ -140,7 +140,7 @@ const en = [
     code: 'Backslash',
   },
   {
-    key: 'CapsLock',
+    key: 'capslock',
     shift: '',
     code: 'CapsLock',
   },
@@ -200,12 +200,12 @@ const en = [
     code: 'Quote',
   },
   {
-    key: 'Enter',
+    key: 'return',
     shift: '',
     code: 'Enter',
   },
   {
-    key: 'Shift',
+    key: 'shift',
     shift: '',
     code: 'ShiftLeft',
   },
@@ -260,27 +260,27 @@ const en = [
     code: 'Slash',
   },
   {
-    key: 'Shift',
+    key: 'shift',
     shift: '',
     code: 'ShiftRight',
   },
   {
-    key: 'en',
+    key: 'EN',
     shift: '',
     code: '',
   },
   {
-    key: 'Control',
+    key: 'control',
     shift: '',
     code: 'ControlLeft',
   },
   {
-    key: 'Alt',
+    key: 'option',
     shift: '',
     code: 'AltLeft',
   },
   {
-    key: 'Meta',
+    key: 'command',
     shift: '',
     code: 'MetaLeft',
   },
@@ -290,12 +290,12 @@ const en = [
     code: 'Space',
   },
   {
-    key: 'Meta',
+    key: 'command',
     shift: '',
     code: 'MetaRight',
   },
   {
-    key: 'Alt',
+    key: 'option',
     shift: '',
     code: 'AltRight',
   },

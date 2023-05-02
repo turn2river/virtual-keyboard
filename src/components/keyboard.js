@@ -18,6 +18,7 @@ class Keyboard {
       this.container.append(key.render());
       return key;
     });
+    document.body.append(this.container);
   }
 
   renderArrows() {
@@ -31,12 +32,22 @@ class Keyboard {
       }
       return arrowKey;
     });
+    document.body.append(this.container);
+  }
+
+  addListeners() {
+    this.clickListener = document.addEventListener('click', (event) => {
+      const { target } = event;
+      if (target.classList.contains('button')) {
+        console.log(target);
+      }
+    });
   }
 
   init() {
     this.render();
     this.renderArrows();
-    document.body.append(this.container);
+    this.addListeners();
   }
 }
 

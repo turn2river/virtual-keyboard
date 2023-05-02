@@ -68,4 +68,10 @@ export default class Key {
   renderArrows() {
     return this.container;
   }
+
+  addListeners() {
+    this.keydown = document.addEventListener('keydown', (event) => {
+      console.log(event.target);
+    });
+  }
 }
