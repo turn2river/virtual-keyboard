@@ -12,49 +12,49 @@ export default class Key {
         this.container.classList.add('button', 'button__left', 'button__bottom', 'button__tab');
         break;
       case 'CapsLock':
-        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__capslock');
+        this.container.classList.add('button', 'button--special', 'button__left', 'button__bottom', 'button__capslock');
         break;
       case 'Enter':
         this.container.classList.add('button', 'button__right', 'button__bottom', 'button__return');
         break;
       case 'ShiftLeft':
-        this.container.classList.add('button', 'button__left', 'button__bottom', 'button__shift');
+        this.container.classList.add('button', 'button--special', 'button__left', 'button__bottom', 'button__shift');
         break;
       case 'ShiftRight':
-        this.container.classList.add('button', 'button__right', 'button__bottom', 'button__shift');
+        this.container.classList.add('button', 'button--special', 'button__right', 'button__bottom', 'button__shift');
         break;
       case 'EN':
-        this.container.classList.add('button', 'button__language');
+        this.container.classList.add('button', 'button--special', 'button__language');
         break;
       case 'ControlLeft':
-        this.container.classList.add('button', 'button__bottom', 'button__control');
+        this.container.classList.add('button', 'button--special', 'button__bottom', 'button__control');
         break;
       case 'AltLeft':
-        this.container.classList.add('button', 'button__bottom', 'button__alt');
+        this.container.classList.add('button', 'button--special', 'button__bottom', 'button__alt');
         break;
       case 'MetaLeft':
-        this.container.classList.add('button', 'button__bottom', 'button__meta');
+        this.container.classList.add('button', 'button--special', 'button__bottom', 'button__meta');
         break;
       case 'Space':
         this.container.classList.add('button', 'button__bottom', 'button__space');
         break;
       case 'MetaRight':
-        this.container.classList.add('button', 'button__bottom', 'button__meta', 'button__meta--right');
+        this.container.classList.add('button', 'button--special', 'button__bottom', 'button__meta', 'button__meta--right');
         break;
       case 'AltRight':
-        this.container.classList.add('button', 'button__bottom', 'button__alt', 'button__alt--right');
+        this.container.classList.add('button', 'button--special', 'button__bottom', 'button__alt', 'button__alt--right');
         break;
       case 'ArrowLeft':
-        this.container.classList.add('button', 'button-arrow', 'button-arrow__left');
+        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__left');
         break;
       case 'ArrowUp':
-        this.container.classList.add('button', 'button-arrow', 'button-arrow__up');
+        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__up');
         break;
       case 'ArrowDown':
-        this.container.classList.add('button', 'button-arrow', 'button-arrow__down');
+        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__down');
         break;
       case 'ArrowRight':
-        this.container.classList.add('button', 'button-arrow', 'button-arrow__right');
+        this.container.classList.add('button', 'button--special', 'button-arrow', 'button-arrow__right');
         break;
       default:
         this.container.classList.add('button');
@@ -67,11 +67,5 @@ export default class Key {
 
   renderArrows() {
     return this.container;
-  }
-
-  addListeners() {
-    this.keydown = document.addEventListener('keydown', (event) => {
-      console.log(event.target);
-    });
   }
 }

@@ -1,6 +1,7 @@
 import en from '../data/en.js';
 import Key from './key.js';
 import arrows from '../data/arrows.js';
+import display from './display.js';
 
 class Keyboard {
   constructor() {
@@ -35,11 +36,19 @@ class Keyboard {
     document.body.append(this.container);
   }
 
+  makeModifiers(target) {
+    this.nod = null;
+    // const modCode = target.code;
+    console.log(target.dataset);
+  }
+
   addListeners() {
-    this.clickListener = document.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
       const { target } = event;
-      if (target.classList.contains('button')) {
-        console.log(target);
+      if (target.classList.contains('button') && !target.classList.contains('button--special')) {
+        display.print(target);
+      } else if (target.classList.contains('button--special')) {
+        this.makeModifiers(target);
       }
     });
   }
