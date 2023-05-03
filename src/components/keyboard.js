@@ -3,7 +3,6 @@ import ru from '../data/ru.js';
 import Key from './key.js';
 import arrows from '../data/arrows.js';
 import display from './display.js';
-import desc from '../data/description.js';
 
 class Keyboard {
   constructor() {
@@ -203,7 +202,6 @@ class Keyboard {
     this.render();
     this.renderArrows();
     this.addListeners();
-    document.body.append(desc);
   }
 }
 

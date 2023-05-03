@@ -1,3 +1,5 @@
+import desc from '../data/description.js';
+
 class Display {
   constructor() {
     this.container = document.createElement('div');
@@ -10,7 +12,7 @@ class Display {
     this.textarea = document.createElement('textarea');
     this.textarea.setAttribute('cols', '125');
     this.textarea.setAttribute('rows', '20');
-    this.textarea.setAttribute('placeholder', 'type here...');
+    this.textarea.setAttribute('placeholder', desc);
     this.textarea.setAttribute('id', 'display');
     this.textarea.setAttribute('name', 'display');
 
