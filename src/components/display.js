@@ -56,7 +56,7 @@ class Display {
       if (start !== length) {
         values.splice(start - 1, 1);
         this.textarea.value = values.join('');
-        this.textarea.selectionEnd -= 1;
+        this.textarea.selectionEnd = start - 1;
         return;
       }
       values.pop();
