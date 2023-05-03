@@ -24,15 +24,14 @@ class Display {
 
   print(event, state) {
     const { isMeta } = state;
-    const { code } = event.target.dataset;
+    const { code } = (event.target) ? event.target.dataset : event.dataset;
     const { length } = this.textarea.value;
     const start = this.textarea.selectionStart;
     const end = this.textarea.selectionEnd;
     const values = [...this.textarea.value];
-
     let value;
     this.textarea.focus();
-    if (code === 'lang') {
+    if (code.match('lang|Shift(Right|Left)|CapsLock|Meta(Right|Left)|Control(Right|Left)|Alt(Right|Left)')) {
       return;
     }
     if (code === 'Tab') {
@@ -62,7 +61,7 @@ class Display {
       this.textarea.value = values.join('');
       return;
     } else {
-      value = event.target.textContent;
+      value = (event.target) ? event.target.textContent : event.textContent;
     }
     this.textarea.setRangeText(value, start, end);
     this.textarea.selectionStart += 1;

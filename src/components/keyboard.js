@@ -77,10 +77,7 @@ class Keyboard {
         }
       });
       this.keys.forEach((e) => {
-        if (
-          e.container.dataset.code === 'ShiftRight'
-          || e.container.dataset.code === 'ShiftLeft'
-        ) {
+        if (e.container.dataset.code.match('Shift(Right|Left)')) {
           e.container.classList.remove('active');
         }
       });
@@ -92,13 +89,13 @@ class Keyboard {
     if (this.state.isCapsed) {
       this.keys.forEach((e) => {
         if (e.container.classList.contains('to-caps')) {
-          e.container.textContent = e.container.innerText.toUpperCase();
+          e.container.textContent = e.container.textContent.toUpperCase();
         }
       });
     } else {
       this.keys.forEach((e) => {
         if (e.container.classList.contains('to-caps')) {
-          e.container.textContent = e.container.innerText.toLowerCase();
+          e.container.textContent = e.container.textContent.toLowerCase();
         }
       });
     }
@@ -163,9 +160,37 @@ class Keyboard {
       }
     });
 
-    document.addEventListener('keydown', (event) => {
-      // event.preventDefault();
-      console.log(event);
+    document.addEventListener('keydown', (key) => {
+      key.preventDefault();
+      const { code } = key;
+      this.keys.forEach((e) => {
+        if (code === e.container.dataset.code) {
+          e.container.classList.add('active');
+          if (code === 'CapsLock' && !this.state.isMeta) {
+            this.setCapsed();
+          }
+          if (code.match('Shift(Right|Left)')) {
+            this.setShifted();
+          }
+          display.print(e.container, this.state);
+        }
+      });
+    });
+
+    document.addEventListener('keyup', (key) => {
+      key.preventDefault();
+      const { code } = key;
+      this.keys.forEach((e) => {
+        if (code === e.container.dataset.code) {
+          e.container.classList.remove('active');
+          if (code === 'CapsLock') {
+            this.setCapsed();
+          }
+          if (code.match('Shift(Right|Left)')) {
+            this.setShifted();
+          }
+        }
+      });
     });
   }
 
