@@ -19,7 +19,7 @@ class Keyboard {
     isMeta: false,
   };
 
-  render(state) {
+  render() {
     this.container.remove();
     this.container = document.createElement('div');
     this.container.classList.add('keyboard');
@@ -31,7 +31,7 @@ class Keyboard {
     }
     this.keys = arr.map((item) => {
       const key = new Key(item);
-      this.container.append(key.render(state));
+      this.container.append(key.render());
       return key;
     });
     document.body.append(this.container);
@@ -54,9 +54,37 @@ class Keyboard {
   }
 
   setShifted() {
+    const shiftLang = this.lang === 'EN' ? en : ru;
     this.state.isShifted = !this.state.isShifted;
-    this.render(this.state);
-    this.renderArrows();
+    if (this.state.isCapsed) {
+      this.setCapsed();
+      this.keys.forEach((e) => {
+        if (e.container.dataset.code === 'CapsLock') {
+          e.container.classList.remove('active');
+        }
+      });
+    }
+    if (this.state.isShifted) {
+      this.keys.forEach((e, i) => {
+        if (e.container.classList.contains('to-shift')) {
+          e.container.textContent = shiftLang[i].shift;
+        }
+      });
+    } else {
+      this.keys.forEach((e, i) => {
+        if (e.container.classList.contains('to-shift')) {
+          e.container.textContent = shiftLang[i].key;
+        }
+      });
+      this.keys.forEach((e) => {
+        if (
+          e.container.dataset.code === 'ShiftRight'
+          || e.container.dataset.code === 'ShiftLeft'
+        ) {
+          e.container.classList.remove('active');
+        }
+      });
+    }
   }
 
   setCapsed() {
@@ -76,13 +104,13 @@ class Keyboard {
     }
   }
 
-  swithLang(target) {
-    if (target.textContent === 'EN') {
+  switchLang(lang) {
+    if (lang === 'EN') {
       this.lang = 'RU';
     } else {
       this.lang = 'EN';
     }
-    this.render(this.state);
+    this.render();
     this.renderArrows();
   }
 
@@ -106,7 +134,7 @@ class Keyboard {
       }
 
       if (target.dataset.code === 'lang') {
-        this.swithLang(target);
+        this.switchLang(this.lang);
       }
 
       if (code === 'ShiftRight' || code === 'ShiftLeft') {
@@ -116,17 +144,26 @@ class Keyboard {
       if (code === 'CapsLock') {
         this.setCapsed();
       }
+
+      if (code === 'MetaLeft' || code === 'MetaRight') {
+        this.state.isMeta = !this.state.isMeta;
+      }
+
+      if (this.state.isMeta && code === 'Space') {
+        this.switchLang(this.lang);
+        this.state.isMeta = !this.state.isMeta;
+      }
     });
 
     document.addEventListener('keydown', (event) => {
-      event.preventDefault();
+      // event.preventDefault();
       console.log(event);
     });
   }
 
   init() {
     this.lang = localStorage.getItem('locallang') ? localStorage.getItem('locallang') : 'EN';
-    this.render(this.state);
+    this.render();
     this.renderArrows();
     this.addListeners();
   }
