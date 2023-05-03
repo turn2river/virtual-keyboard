@@ -163,6 +163,11 @@ class Keyboard {
     document.addEventListener('keydown', (key) => {
       const { code } = key;
       if (code.match('Arrow(Up|Down|Left|Right)')) {
+        this.arrows.forEach((e) => {
+          if (code === e.container.dataset.code) {
+            e.container.classList.add('active');
+          }
+        });
         return;
       }
       key.preventDefault();
@@ -181,8 +186,16 @@ class Keyboard {
     });
 
     document.addEventListener('keyup', (key) => {
-      key.preventDefault();
       const { code } = key;
+      if (code.match('Arrow(Up|Down|Left|Right)')) {
+        this.arrows.forEach((e) => {
+          if (code === e.container.dataset.code) {
+            e.container.classList.remove('active');
+          }
+        });
+        return;
+      }
+      key.preventDefault();
       this.keys.forEach((e) => {
         if (code === e.container.dataset.code) {
           e.container.classList.remove('active');
