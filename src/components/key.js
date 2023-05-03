@@ -5,6 +5,9 @@ export default class Key {
     this.key = key;
     this.lang = 'EN';
     this.container.innerText = this.key.key;
+  }
+
+  render(state) {
     switch (this.key.code) {
       case 'Backspace':
         this.container.classList.add('button', 'button__right', 'button__bottom', 'button__delete');
@@ -60,29 +63,44 @@ export default class Key {
       default:
         this.container.classList.add('button', 'to-shift');
     }
-    if (key.caps) {
+
+    if (this.key.caps) {
       this.container.classList.add('to-caps');
     }
-  }
 
-  render() {
-    // const { isShifted, isCapsed, isMeta } = state;
-    // if (isShifted) {
-    //   this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
-    //   // console.log('@');
-    //   return this.container;
-    // } if (isCapsed) {
-    //   console.log(isCapsed);
-    // } else if (isMeta) {
-    //   console.log(isMeta);
-    // } else {
-    //   this.container.innerText = this.key.key;
-    // }
+    const { isShifted, isCapsed, isMeta } = state;
+    if (isShifted) {
+      this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
+      // console.log('@');
+      return this.container;
+    } if (isCapsed) {
+      console.log(isCapsed);
+    } else if (isMeta) {
+      console.log(isMeta);
+    } else {
+      this.container.innerText = this.key.key;
+    }
 
     return this.container;
   }
 
   renderArrows() {
+    switch (this.key.code) {
+      case 'ArrowLeft':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__left');
+        break;
+      case 'ArrowUp':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__up');
+        break;
+      case 'ArrowDown':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__down');
+        break;
+      case 'ArrowRight':
+        this.container.classList.add('button', 'button-arrow', 'button-arrow__right');
+        break;
+      default:
+        this.container.classList.add('button');
+    }
     return this.container;
   }
 }

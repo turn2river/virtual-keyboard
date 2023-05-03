@@ -53,14 +53,10 @@ class Keyboard {
     document.body.append(this.container);
   }
 
-  setModifiers(target) {
-    const { code } = target.dataset;
-    if (code === 'ShiftRight' || code === 'ShiftLeft') {
-      this.state.isShifted = !this.state.isShifted;
-      this.render(this.state);
-      this.renderArrows();
-    }
-    target.classList.toggle('active');
+  setShifted() {
+    this.state.isShifted = !this.state.isShifted;
+    this.render(this.state);
+    this.renderArrows();
   }
 
   swithLang(target) {
@@ -79,19 +75,27 @@ class Keyboard {
     });
     document.addEventListener('click', (event) => {
       const { target } = event;
+      const { code } = event.target.dataset;
       if (target.classList.contains('button') && !target.classList.contains('button--special')) {
         display.print(target);
         for (let i = 0; i < this.keys.length; i += 1) {
           this.keys[i].container.classList.remove('active');
         }
+        if (this.state.isShifted) {
+          this.setShifted();
+        }
       }
 
       if (target.classList.contains('button--special')) {
-        this.setModifiers(target);
+        target.classList.toggle('active');
       }
 
       if (target.dataset.code === 'lang') {
         this.swithLang(target);
+      }
+
+      if (code === 'ShiftRight' || code === 'ShiftLeft') {
+        this.setShifted();
       }
     });
   }
