@@ -48,7 +48,8 @@ class Display {
     } else if (code === 'Backspace' && isMeta) {
       if (this.textarea.selectionStart === this.textarea.value.length) return;
       this.textarea.value = this.textarea.value.slice(0, this.textarea.selectionStart)
-                          + this.textarea.value.slice(this.textarea.selectionStart + 1);
+                          + this.textarea.value.slice(this.textarea.selectionStart
+                                                + 1, this.textarea.value.length);
       this.textarea.selectionEnd = start;
       return;
     } else if (code === 'Backspace') {
@@ -56,7 +57,7 @@ class Display {
       if (start !== length) {
         values.splice(start - 1, 1);
         this.textarea.value = values.join('');
-        this.textarea.selectionEnd -= 1;
+        this.textarea.selectionEnd = start - 1;
         return;
       }
       values.pop();

@@ -180,6 +180,13 @@ class Keyboard {
           if (code.match('Shift(Right|Left)')) {
             this.setShifted();
           }
+          if (code.match('Meta(Left|Right)')) {
+            this.state.isMeta = !this.state.isMeta;
+          }
+          if (code.match('Backspace')) {
+            display.print(e.container, this.state);
+            return;
+          }
           display.print(e.container, this.state);
         }
       });
@@ -205,6 +212,9 @@ class Keyboard {
           if (code.match('Shift(Right|Left)')) {
             this.setShifted();
           }
+        }
+        if (code.match('Backspace')) {
+          e.container.classList.remove('active');
         }
       });
     });
