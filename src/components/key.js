@@ -7,7 +7,7 @@ export default class Key {
     this.container.innerText = this.key.key;
   }
 
-  render(state) {
+  render() {
     switch (this.key.code) {
       case 'Backspace':
         this.container.classList.add('button', 'button__right', 'button__bottom', 'button__delete');
@@ -68,19 +68,18 @@ export default class Key {
       this.container.classList.add('to-caps');
     }
 
-    const { isShifted, isCapsed, isMeta } = state;
-    if (isShifted) {
-      this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
-      // console.log('@');
-      return this.container;
-    } if (isCapsed) {
-      console.log(isCapsed);
-    } else if (isMeta) {
-      console.log(isMeta);
-    } else {
-      this.container.innerText = this.key.key;
-    }
-
+    // const { isShifted, isCapsed, isMeta } = state;
+    // if (isShifted) {
+    //   this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
+    //   // console.log('@');
+    //   return this.container;
+    // } if (isCapsed) {
+    //   console.log(isCapsed);
+    // } else if (isMeta) {
+    //   console.log(isMeta);
+    // } else {
+    // }
+    this.container.innerText = this.key.key;
     return this.container;
   }
 

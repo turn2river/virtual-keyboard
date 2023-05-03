@@ -59,6 +59,23 @@ class Keyboard {
     this.renderArrows();
   }
 
+  setCapsed() {
+    this.state.isCapsed = !this.state.isCapsed;
+    if (this.state.isCapsed) {
+      this.keys.forEach((e) => {
+        if (e.container.classList.contains('to-caps')) {
+          e.container.textContent = e.container.innerText.toUpperCase();
+        }
+      });
+    } else {
+      this.keys.forEach((e) => {
+        if (e.container.classList.contains('to-caps')) {
+          e.container.textContent = e.container.innerText.toLowerCase();
+        }
+      });
+    }
+  }
+
   swithLang(target) {
     if (target.textContent === 'EN') {
       this.lang = 'RU';
@@ -73,14 +90,12 @@ class Keyboard {
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('locallang', this.lang);
     });
+
     document.addEventListener('click', (event) => {
       const { target } = event;
       const { code } = event.target.dataset;
       if (target.classList.contains('button') && !target.classList.contains('button--special')) {
         display.print(target);
-        for (let i = 0; i < this.keys.length; i += 1) {
-          this.keys[i].container.classList.remove('active');
-        }
         if (this.state.isShifted) {
           this.setShifted();
         }
@@ -97,11 +112,19 @@ class Keyboard {
       if (code === 'ShiftRight' || code === 'ShiftLeft') {
         this.setShifted();
       }
+
+      if (code === 'CapsLock') {
+        this.setCapsed();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      event.preventDefault();
+      console.log(event);
     });
   }
 
   init() {
-    // this.getStorage();
     this.lang = localStorage.getItem('locallang') ? localStorage.getItem('locallang') : 'EN';
     this.render(this.state);
     this.renderArrows();
