@@ -22,8 +22,9 @@ class Display {
     document.body.append(this.container);
   }
 
-  print(target) {
-    const { code } = target.dataset;
+  print(event, state) {
+    const { isMeta } = state;
+    const { code } = event.target.dataset;
     const { length } = this.textarea.value;
     const start = this.textarea.selectionStart;
     const end = this.textarea.selectionEnd;
@@ -38,8 +39,17 @@ class Display {
       value = '\t';
     } else if (code === 'Enter') {
       value = '\n';
-    } else if (code === 'Space') {
+    } else if (code === 'Space' && !isMeta) {
       value = ' ';
+    } else if (code === 'Space' && isMeta) {
+      value = '';
+      return;
+    } else if (code === 'Backspace' && isMeta) {
+      if (this.textarea.selectionStart === this.textarea.value.length) return;
+      this.textarea.value = this.textarea.value.slice(0, this.textarea.selectionStart)
+                          + this.textarea.value.slice(this.textarea.selectionStart + 1);
+      this.textarea.selectionEnd = start;
+      return;
     } else if (code === 'Backspace') {
       if (!start) return;
       if (start !== length) {
@@ -52,7 +62,7 @@ class Display {
       this.textarea.value = values.join('');
       return;
     } else {
-      value = target.textContent;
+      value = event.target.textContent;
     }
     this.textarea.setRangeText(value, start, end);
     this.textarea.selectionStart += 1;

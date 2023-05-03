@@ -123,9 +123,17 @@ class Keyboard {
       const { target } = event;
       const { code } = event.target.dataset;
       if (target.classList.contains('button') && !target.classList.contains('button--special')) {
-        display.print(target);
+        display.print(event, this.state);
         if (this.state.isShifted) {
           this.setShifted();
+        }
+        if (this.state.isMeta) {
+          this.state.isMeta = !this.state.isMeta;
+          this.keys.forEach((e) => {
+            if (e.container.classList.contains('button__meta')) {
+              e.container.classList.remove('active');
+            }
+          });
         }
       }
 
