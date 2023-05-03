@@ -3,6 +3,7 @@ import ru from '../data/ru.js';
 import Key from './key.js';
 import arrows from '../data/arrows.js';
 import display from './display.js';
+import desc from '../data/description.js';
 
 class Keyboard {
   constructor() {
@@ -132,6 +133,11 @@ class Keyboard {
             }
           });
         }
+        this.keys.forEach((e) => {
+          if (e.container.dataset.code.match('Alt(Left|Right)|Control(Left|Right)')) {
+            e.container.classList.remove('active');
+          }
+        });
       }
 
       if (target.classList.contains('button--special')) {
@@ -153,16 +159,14 @@ class Keyboard {
       if (code === 'MetaLeft' || code === 'MetaRight') {
         this.state.isMeta = !this.state.isMeta;
       }
-
-      if (this.state.isMeta && code === 'Space') {
-        this.switchLang(this.lang);
-        this.state.isMeta = !this.state.isMeta;
-      }
     });
 
     document.addEventListener('keydown', (key) => {
-      key.preventDefault();
       const { code } = key;
+      if (code.match('Arrow(Up|Down|Left|Right)')) {
+        return;
+      }
+      key.preventDefault();
       this.keys.forEach((e) => {
         if (code === e.container.dataset.code) {
           e.container.classList.add('active');
@@ -199,6 +203,7 @@ class Keyboard {
     this.render();
     this.renderArrows();
     this.addListeners();
+    document.body.append(desc);
   }
 }
 

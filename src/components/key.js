@@ -68,17 +68,6 @@ export default class Key {
       this.container.classList.add('to-caps');
     }
 
-    // const { isShifted, isCapsed, isMeta } = state;
-    // if (isShifted) {
-    //   this.container.innerText = state && this.key.shift ? this.key.shift : this.key.key;
-    //   // console.log('@');
-    //   return this.container;
-    // } if (isCapsed) {
-    //   console.log(isCapsed);
-    // } else if (isMeta) {
-    //   console.log(isMeta);
-    // } else {
-    // }
     this.container.innerText = this.key.key;
     return this.container;
   }
@@ -100,6 +89,7 @@ export default class Key {
       default:
         this.container.classList.add('button');
     }
+    this.container.innerText = this.key.key;
     return this.container;
   }
 }
