@@ -45,7 +45,7 @@ class Display {
     } else if (code === 'Space' && isMeta) {
       value = '';
       return;
-    } else if (code === 'Backspace' && isMeta) {
+    } else if ((code === 'Backspace' && isMeta) || code === 'Delete') {
       if (this.textarea.selectionStart === this.textarea.value.length) return;
       this.textarea.value = this.textarea.value.slice(0, this.textarea.selectionStart)
                           + this.textarea.value.slice(this.textarea.selectionStart

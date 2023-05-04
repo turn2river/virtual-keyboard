@@ -170,6 +170,9 @@ class Keyboard {
         });
         return;
       }
+      if (code.match('Delete')) {
+        display.print(code, this.state);
+      }
       key.preventDefault();
       this.keys.forEach((e) => {
         if (code === e.container.dataset.code) {
