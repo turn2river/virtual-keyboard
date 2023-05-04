@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5e5;
+}
+
+.display-label {
+  display: block;
+  width: 1032px;
+  height: 394px;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+
+#display {
+  padding: 10px;
+  width: 1032px;
+  height: 394px;
+  resize: none;
+  border-radius: 8px;
+  outline: none;
+  font-family: monospace;
+  border: 8px solid #d6d6d6;
+}
+
+.keyboard {
+  width: 1032px;
+  height: 394px;
+  padding: 21px;
+  border-radius: 16px;
+  background-color: #d6d6d6;
+  box-shadow: inset 2px 2px 10px 3px #00000040;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 21px;
+}
+
+.button {
+  outline: none;
+  border: none;
+  width: 62px;
+  height: 64px;
+  border-radius: 4px;
+  filter: drop-shadow(0px 5px 3px #626262);
+  transition: 0.3s ease;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button__left {
+  justify-content: start;
+}
+
+.button__right {
+  justify-content: flex-end;
+}
+
+.button__bottom {
+  align-items: flex-end;
+}
+
+.button__delete,
+.button__tab {
+  width: 93px;
+}
+
+.button__delete::after {
+  position: absolute;
+  content: url('./assets/icons/backspace.svg');
+  top: 10px;
+}
+
+.button__capslock,
+.button__return {
+  width: 112px;
+}
+
+.button__capslock::after {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 10px;
+  left: 10px;
+  border-radius: 10px;
+  background-color: #626262;
+}
+
+.button__control::after {
+  position: absolute;
+  content: url('./assets/icons/control.svg');
+  right: 10px;
+  top: 5px;
+}
+
+.button__alt::after {
+  position: absolute;
+  content: url('./assets/icons/option.svg');
+  right: 10px;
+  top: 5px;
+}
+
+.button__alt--right::after {
+  position: absolute;
+  content: url('./assets/icons/option.svg');
+  left: -20px;
+  top: 5px;
+}
+
+.button__meta::after {
+  position: absolute;
+  content: url('./assets/icons/command.svg');
+  right: 10px;
+  top: 5px;
+}
+
+.button__meta--right::after {
+  position: absolute;
+  content: url('./assets/icons/command.svg');
+  left: -40px;
+  top: 5px;
+}
+
+.button__capslock.active::after {
+  background-color: #00ffff;
+}
+
+.button__shift {
+  width: 146px;
+}
+
+.button__shift::after {
+  position: absolute;
+  content: url('./assets/icons/shift.svg');
+  top: 10px;
+}
+
+.button__meta {
+  width: 78px;
+}
+
+.button__space {
+  width: 335px;
+  border: 2px solid #e5e5e5;
+  background-image: url(./assets/space.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #d6d6d6;
+  background-position: 40%;
+  transition: 0.5s;
+}
+
+.button__space:hover,
+.button__space:active {
+  background-position: 0 40%;
+}
+
+.button-arrow {
+  height: 30px;
+  padding: 0;
+}
+
+.vertical-arrows__container {
+  display: flex;
+  width: 62px;
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+.button-arrow__left,
+.button-arrow__right {
+  margin-top: 34px;
+}
+
+.button__language {
+  background-color: DarkSlateBlue;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.button__language:hover {
+  background-color: skyblue;
+  color: white;
+}
+
+.button:active {
+  filter: drop-shadow(0px 0px 2px #626262);
+  transform: translateY(3px);
+}
+
+.active {
+  filter: drop-shadow(0px 0px 2px #626262);
+  transform: translateY(3px);
+  background-color: #ffffff;
+}
